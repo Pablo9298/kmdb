@@ -7,6 +7,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface MovieRepository extends JpaRepository<Movie, Long> {
@@ -18,4 +19,7 @@ public interface MovieRepository extends JpaRepository<Movie, Long> {
 
     // Finds movies by title, ignoring case and allowing partial matches
     List<Movie> findByTitleContainingIgnoreCase(String title);
+
+    // Check if there is a movie with the same name
+    Optional<Movie> findByTitleIgnoreCase(String title);
 }

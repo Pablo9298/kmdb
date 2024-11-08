@@ -27,6 +27,11 @@ public class MovieService {
 
     // Creates a new movie with associated actors and genres
     public Movie createMovie(Movie movie) {
+
+        if (movieRepository.findByTitleIgnoreCase(movie.getTitle()).isPresent()) {
+            throw new IllegalStateException("Film with title '" + movie.getTitle() + "' already exists.");
+        }
+
         Set<Actor> managedActors = new HashSet<>();
         for (Actor actor : movie.getActors()) {
             Actor managedActor = actorRepository.findById(actor.getId())

@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class GenreService {
@@ -19,6 +20,10 @@ public class GenreService {
 
     // Creates a new genre
     public Genre createGenre(Genre genre) {
+        Optional<Genre> existingGenre = genreRepository.findByNameIgnoreCase(genre.getName());
+        if(existingGenre.isPresent()) {
+            throw new IllegalStateException("Genre with name '" + genre.getName() + "' already exists");
+        }
         return genreRepository.save(genre);
     }
 

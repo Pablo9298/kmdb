@@ -25,9 +25,9 @@ public class ActorController {
     // Creates a new actor
     @PostMapping
     public ResponseEntity<?> createActor(@RequestBody @Valid Actor actor) {
-//        if (!isValidDate(actor.getBirthDate())) {
-//            return new ResponseEntity<>("Birth date must be in the format YYYY-MM-DD", HttpStatus.BAD_REQUEST);
-//        }
+        if (!isValidDate(actor.getBirthDate())) {
+            return new ResponseEntity<>("Birth date must be in the format YYYY-MM-DD", HttpStatus.BAD_REQUEST);
+        }
         Actor createdActor = actorService.createActor(actor);
         return new ResponseEntity<>(createdActor, HttpStatus.CREATED);
     }
@@ -76,13 +76,13 @@ public class ActorController {
         return actorService.getMoviesByActor(actorId);
     }
 
-//    // Checks if a date string matches the format YYYY-MM-DD
-//    private boolean isValidDate(String dateStr) {
-//        try {
-//            LocalDate.parse(dateStr);  // Checks if date is in the correct format
-//            return true;
-//        } catch (DateTimeParseException e) {
-//            return false;
-//        }
-//    }
+    // Checks if a date string matches the format YYYY-MM-DD
+    private boolean isValidDate(String dateStr) {
+        try {
+            LocalDate.parse(dateStr);  // Checks if date is in the correct format
+            return true;
+        } catch (DateTimeParseException e) {
+            return false;
+        }
+    }
 }

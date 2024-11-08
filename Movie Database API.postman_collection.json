@@ -166,7 +166,7 @@
 					"response": []
 				},
 				{
-					"name": "Genre force true",
+					"name": "Actor force true",
 					"request": {
 						"method": "DELETE",
 						"header": [],
