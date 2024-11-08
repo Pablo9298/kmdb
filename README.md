@@ -47,7 +47,7 @@ To set up and run the Movies API locally, follow these steps:
 
 1. **Clone the Repository**
    ```bash
-   git clone https://gitea.kood.tech/pavlobiiuts/kmdb
+    git clone https://github.com/Pablo9298/kmdb.git
    ```
    
     ```bash
